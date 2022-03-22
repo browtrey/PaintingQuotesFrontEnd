@@ -1,0 +1,7 @@
+{
+  "name": "termProjFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
