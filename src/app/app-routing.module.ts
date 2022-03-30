@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'edit-quotation',
+    loadChildren: () => import('./pages/edit-quotation/edit-quotation.module').then( m => m.EditQuotationPageModule)
   }
 ];
 @NgModule({
