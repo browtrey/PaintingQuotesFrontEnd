@@ -16,6 +16,7 @@ export class Tab1Page {
   Room: Room [] = [{roomType: "", roomWidth: null, roomLength: null, roomColour: "", roomPaintType: ""}]
   Rooms: FormGroup[] = new Array
   Quote: Quotation = {Id: null, qDate: null, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
+  idGen: number = 0
 
   constructor(private serv: ProjServiceService) { }
 
@@ -34,22 +35,17 @@ export class Tab1Page {
   }
 
   save(){
+    this.idGen++
+
     for (let i = 0; i < this.Quote.qNumofRooms; i++){
       this.Quote.qRoom[i] = this.Rooms[i].value
     }
-    console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
-    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qAdress: this.Quote.qAddress, qEEmail: this.Quote.qEmail, qName: this.Quote.qName, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
-    this.serv.insert(params).subscribe(data =>{
-      console.log("quote sent")
-    },
-    (err: HttpErrorResponse) => {
-      console.log(err.message);
-      }
-    )
-  }
+    
+    this.Quote.Id = this.idGen
 
-  getAll(){
-    this.serv.listAll().subscribe(data => {
+    console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
+    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
+    this.serv.insert(params).subscribe(data =>{
       console.log(data)
     },
     (err: HttpErrorResponse) => {

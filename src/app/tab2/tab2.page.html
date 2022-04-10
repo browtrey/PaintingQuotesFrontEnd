@@ -3,39 +3,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
-    <ion-button color="danger">Delete</ion-button>
+  
+  <ion-item *ngFor="let q of quote">
+    <ion-button color="danger" (click)="deleteOne(q.Id)">Delete</ion-button>
     <ion-button [routerLink]="['/edit-quotation']">Go to edit</ion-button>
     <br>
     <ion-label>
-      ID: 1
+      ID: {{q.Id}}
       <br>
-      Date: 2022/xx/xx
+      Date: {{q.qDate}}
       <br>
-      Name: Test
+      Name: {{q.qName}}
       <br>
-      Address: 123 Fake St.
+      Address: {{q.qAddress}}
       <br>
-      Email: Test@test.com
+      Email: {{q.qEmail}}
       <br>
-      Number of Rooms: 1
+      Number of Rooms: {{q.qNumofRooms}}
       <br>
-      <ion-item>
-        <ion-title>Room x</ion-title>
+      <ion-item *ngFor="let r of q.qRoom; let i = index">
         <ion-label>
-          Type of Room: Bedroom
+          Room {{i+1}}
           <br>
-          Width: 5M
           <br>
-          Length: 6M
+          Type of Room: {{r.roomType}}
           <br>
-          Colour: Red
+          Width: {{r.roomWidth}}
           <br>
-          Type of Paint: Standard - $24.99
+          Length: {{r.roomLength}}
+          <br>
+          Colour: {{r.roomColour}}
+          <br>
+          Type of Paint: {{r.roomPaintType}}
         </ion-label>
       </ion-item>
     </ion-label>
-
+    <hr>
     <br>
     <br>
   </ion-item>

@@ -21,7 +21,7 @@ export class ProjServiceService {
   }
 
   deleteOne(params) {
-    return this.http.delete('http://127.0.0.1:8888/deleteAll/', { params })
+    return this.http.delete('http://127.0.0.1:8888/deleteOne/', { params })
   }
 
   Update(params){
