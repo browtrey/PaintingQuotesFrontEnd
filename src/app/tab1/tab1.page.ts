@@ -3,6 +3,7 @@ import { FormControl, FormGroup} from '@angular/forms';
 import { Quotation } from '../models/Quotation';
 import { Room } from '../models/Room';
 import { ProjServiceService } from '../services/proj-service.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-tab1',
@@ -16,7 +17,7 @@ export class Tab1Page {
   Rooms: FormGroup[] = new Array
   Quote: Quotation = {Id: null, qDate: null, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
 
-  constructor() { }
+  constructor(private serv: ProjServiceService) { }
 
   chRoom() {
     console.log('chRoom')
@@ -37,6 +38,34 @@ export class Tab1Page {
       this.Quote.qRoom[i] = this.Rooms[i].value
     }
     console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
+    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qAdress: this.Quote.qAddress, qEEmail: this.Quote.qEmail, qName: this.Quote.qName, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
+    this.serv.insert(params).subscribe(data =>{
+      console.log("quote sent")
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.message);
+      }
+    )
+  }
+
+  getAll(){
+    this.serv.listAll().subscribe(data => {
+      console.log(data)
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.message);
+      }
+    )
+  }
+
+  deleteAll(){
+    this.serv.deleteAll().subscribe(data => {
+      console.log(data)
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.message);
+      }
+    )
   }
 
   //func to startup db

@@ -72,14 +72,14 @@
       </ion-item>
     </form>
     </ion-card>
-  </form>
   <div>
     <ion-button type="submit" (click)="save()">Save Quote</ion-button>
   </div>
   <div>
-    <ion-button type="submit">Delete All Quotes</ion-button>
+    <ion-button (click)="deleteAll()" type="submit">Delete All Quotes</ion-button>
+    <ion-button (click)="getAll()">Temp Listing</ion-button>
   </div>
-
+</form>
 </ion-content>
 
 <ion-footer>

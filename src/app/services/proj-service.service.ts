@@ -9,22 +9,22 @@ export class ProjServiceService {
   constructor(private http: HttpClient) { }
 
   insert(params) {
-    return this.http.post('http://127.0.0.1:8887/add/',{ params })
+    return this.http.post('http://127.0.0.1:8888/add/',{ params })
   }
 
-  listAll(params) {
-    return this.http.get('http://127.0.0.1:8887/listAll/',{ params })
+  listAll() {
+    return this.http.get('http://127.0.0.1:8888/listAll/')
   }
 
   deleteAll() {
-    return this.http.delete('http://127.0.0.1:8887/deleteAll/')
+    return this.http.delete('http://127.0.0.1:8888/deleteAll/')
   }
 
   deleteOne(params) {
-    return this.http.delete('http://127.0.0.1:8887/deleteAll/', { params })
+    return this.http.delete('http://127.0.0.1:8888/deleteAll/', { params })
   }
 
   Update(params){
-    return this.http.put('http://127.0.0.1:8887//update/', { params })
+    return this.http.put('http://127.0.0.1:8888/update/', { params })
   }
 }
