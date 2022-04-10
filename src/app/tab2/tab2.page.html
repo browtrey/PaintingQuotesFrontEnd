@@ -3,7 +3,42 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button [routerLink]="['/edit-quotation']">Go to edit</ion-button>
+  <ion-item>
+    <ion-button color="danger">Delete</ion-button>
+    <ion-button [routerLink]="['/edit-quotation']">Go to edit</ion-button>
+    <br>
+    <ion-label>
+      ID: 1
+      <br>
+      Date: 2022/xx/xx
+      <br>
+      Name: Test
+      <br>
+      Address: 123 Fake St.
+      <br>
+      Email: Test@test.com
+      <br>
+      Number of Rooms: 1
+      <br>
+      <ion-item>
+        <ion-title>Room x</ion-title>
+        <ion-label>
+          Type of Room: Bedroom
+          <br>
+          Width: 5M
+          <br>
+          Length: 6M
+          <br>
+          Colour: Red
+          <br>
+          Type of Paint: Standard - $24.99
+        </ion-label>
+      </ion-item>
+    </ion-label>
+
+    <br>
+    <br>
+  </ion-item>
 </ion-content>
 
 <ion-footer>
