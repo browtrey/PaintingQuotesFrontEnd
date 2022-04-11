@@ -48,14 +48,14 @@ export class Tab1Page {
     this.Quote.Id = this.idGen
 
     console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
-    /*const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
+    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
     this.serv.insert(params).subscribe(data =>{
       console.log(data)
     },
     (err: HttpErrorResponse) => {
       console.log(err.message);
       }
-    )*/
+    )
   }
 
   deleteAll(){

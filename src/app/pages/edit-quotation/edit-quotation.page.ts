@@ -18,10 +18,10 @@ export class EditQuotationPage implements OnInit {
   y = this.getDate.getFullYear();
   today = this.y + "-" + this.m + "-" + this.d
 
-  Room: Room [] = [{roomType: "", roomWidth: null, roomLength: null, roomColour: "", roomPaintType: ""}]
-  Quote: Quotation = {Id: null, qDate: this.today, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
-  qId: any;
   oldQuote:any = []
+  Room: Room [] = [{roomType: "", roomWidth: null, roomLength: null, roomColour: "", roomPaintType: ""}]
+  Quote: Quotation = {Id: null, qDate: null, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
+  qId: any;
 
   constructor(private route: ActivatedRoute, private serv: ProjServiceService) { }
 
@@ -31,15 +31,36 @@ export class EditQuotationPage implements OnInit {
     this.serv.listOne(this.qId).subscribe(data => {
       console.log(data)
       this.oldQuote = data
+      
+      this.Quote.Id = this.oldQuote[0].Id
+      this.Quote.qDate = this.oldQuote[0].qDate
+      this.Quote.qName = this.oldQuote[0].qName
+      this.Quote.qAddress = this.oldQuote[0].qAddress
+      this.Quote.qEmail = this.oldQuote[0].qEmail
+      this.Quote.qNumofRooms = this.oldQuote[0].qNumofRooms
+      this.Quote.qRoom = this.oldQuote[0].qRoom
+      console.log("testing..: " + this.Quote.Id)
     },
     (err: HttpErrorResponse) => {
     console.log(err.message);
     })
+
+
   }
 
+  
 
   update(){
-    console.log("test")
+    
+    console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
+    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
+    this.serv.Update(params).subscribe(data =>{
+      console.log(data)
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.message);
+      }
+    )
   }
 
 }
