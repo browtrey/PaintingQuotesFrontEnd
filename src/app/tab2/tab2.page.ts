@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { IonRefresher } from '@ionic/angular';
 import { Quotation } from '../models/Quotation';
 import { Room } from '../models/Room';
 import { ProjServiceService } from '../services/proj-service.service';
@@ -23,9 +24,6 @@ export class Tab2Page {
     })
   }
 
-  loadQ(){
-    
-  }
 
   deleteOne(x){
     console.log(x)
@@ -37,6 +35,7 @@ export class Tab2Page {
     console.log(err.message);
     })
 
+    location.reload()
   }
 
 }

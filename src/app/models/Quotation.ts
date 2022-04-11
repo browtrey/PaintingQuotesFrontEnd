@@ -2,7 +2,7 @@ import { Room } from "./Room"
 
 export interface Quotation{
   Id: number
-  qDate: Date
+  qDate: any
   qName: String
   qAddress: String
   qEmail: String

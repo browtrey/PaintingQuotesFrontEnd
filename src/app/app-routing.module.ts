@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'edit-quotation',
+    path: 'edit-quotation/:parm',
     loadChildren: () => import('./pages/edit-quotation/edit-quotation.module').then( m => m.EditQuotationPageModule)
   }
 ];

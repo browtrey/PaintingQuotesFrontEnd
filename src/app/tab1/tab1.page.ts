@@ -12,10 +12,15 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class Tab1Page {
 
-
+  getDate = new Date()
+  d = String(this.getDate.getDate()).padStart(2, '0');
+  m = String(this.getDate.getMonth() + 1).padStart(2, '0');
+  y = this.getDate.getFullYear();
+  today = this.y + "-" + this.m + "-" + this.d
+  
   Room: Room [] = [{roomType: "", roomWidth: null, roomLength: null, roomColour: "", roomPaintType: ""}]
   Rooms: FormGroup[] = new Array
-  Quote: Quotation = {Id: null, qDate: null, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
+  Quote: Quotation = {Id: null, qDate: this.today, qName: "" ,qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room}
   idGen: number = 0
 
   constructor(private serv: ProjServiceService) { }
@@ -30,7 +35,6 @@ export class Tab1Page {
         roomColour: new FormControl(),
         roomPaintType: new FormControl()
       });
-      console.log(this.Rooms[i].value)
     }  
   }
 
@@ -44,14 +48,14 @@ export class Tab1Page {
     this.Quote.Id = this.idGen
 
     console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
-    const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
+    /*const params = {Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom}
     this.serv.insert(params).subscribe(data =>{
       console.log(data)
     },
     (err: HttpErrorResponse) => {
       console.log(err.message);
       }
-    )
+    )*/
   }
 
   deleteAll(){

@@ -6,7 +6,7 @@
   
   <ion-item *ngFor="let q of quote">
     <ion-button color="danger" (click)="deleteOne(q.Id)">Delete</ion-button>
-    <ion-button [routerLink]="['/edit-quotation']">Go to edit</ion-button>
+    <ion-button [routerLink]="['/edit-quotation', q.Id]">Go to edit</ion-button>
     <br>
     <ion-label>
       ID: {{q.Id}}

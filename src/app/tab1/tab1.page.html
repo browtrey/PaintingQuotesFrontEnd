@@ -7,12 +7,12 @@
     <ion-card>
       <ion-item>
         <ion-label>ID: </ion-label>
-        <ion-input></ion-input>
+        <ion-input value={{idGen}} readonly></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label>Date: </ion-label>
-        <ion-input type="Date" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input readonly value="{{today}}" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>

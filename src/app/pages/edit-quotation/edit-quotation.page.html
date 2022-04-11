@@ -4,7 +4,79 @@
 </ion-header>
 
 <ion-content>
-  <h1>Edit Quotation Page</h1>
+  <br>
+  <ion-title>Edit Quote</ion-title>
+  <br>
+  <form>
+    <ion-card *ngFor="let q of oldQuote">
+      <ion-item>
+        <ion-label>ID: </ion-label>
+        <ion-input value={{q.Id}} readonly></ion-input>
+        <br>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date: </ion-label>
+        <ion-input readonly value={{q.qDate}}></ion-input>
+        <br>
+      </ion-item>
+      <ion-item>
+        <ion-label>Name: </ion-label>
+        <ion-input type="text" value={{q.qName}}></ion-input>
+        <br>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address: </ion-label>
+        <ion-input type="text" value={{q.qAddress}}></ion-input>
+        <br>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email: </ion-label>
+        <ion-input type="text" value={{q.qEmail}}></ion-input>
+        <br>
+      </ion-item>
+      <ion-item>
+        <ion-label>Number of rooms: </ion-label>
+        <ion-input type="number" value="{{q.qNumofRooms}}"></ion-input>
+        <br>
+      </ion-item>
+      <br>
+      <ion-card *ngFor="let r of q.qRoom; let i = index">
+        <ion-item>
+          <ion-label>Type of Room: </ion-label>
+          <ion-input type="text" value="{{r.roomType}}"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label>Width: </ion-label>
+          <ion-input type="text" value="{{r.roomWidth}}"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label>Length: </ion-label>
+          <ion-input type="text" value="{{r.roomLength}}"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label>Colour: </ion-label>
+          <ion-input type="text" value="{{r.roomColour}}}"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label>Paint: </ion-label>
+          <ion-select value="{{r.roomPaintType}}">
+            <ion-select-option value="Standard - $24.99" name="paint">Standard - $24.99</ion-select-option>
+            <ion-select-option value="Premium - $34.99" name="paint">Premium - $34.99</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card>
+      <br>
+      <br>
+    </ion-card>
+  </form>
+
+  <div>
+    <ion-button type="submit" (click)="update()">Update Quote</ion-button>
+  </div>
 </ion-content>
 
 <ion-footer>

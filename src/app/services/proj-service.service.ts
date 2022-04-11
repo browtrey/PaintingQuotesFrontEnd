@@ -16,6 +16,10 @@ export class ProjServiceService {
     return this.http.get('http://127.0.0.1:8888/listAll/')
   }
 
+  listOne(params) {
+    return this.http.get('http://127.0.0.1:8888/listOne/',{ params })
+  }
+
   deleteAll() {
     return this.http.delete('http://127.0.0.1:8888/deleteAll/')
   }
