@@ -2,37 +2,37 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content color="medium">
   <form>
     <ion-card>
       <ion-item>
-        <ion-label>ID: </ion-label>
-        <ion-input value={{idGen}} readonly></ion-input>
+        <ion-label class="label">ID: </ion-label>
+        <ion-input required value={{idGen}} readonly></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Date: </ion-label>
-        <ion-input readonly value="{{today}}" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-label class="label">Date: </ion-label>
+        <ion-input required readonly value="{{today}}" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Name: </ion-label>
-        <ion-input type="text" [(ngModel)]="Quote.qName" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-label class="label">Name: </ion-label>
+        <ion-input required type="text" [(ngModel)]="Quote.qName" [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Address: </ion-label>
-        <ion-input type="text" [(ngModel)]="Quote.qAddress" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-label class="label">Address: </ion-label>
+        <ion-input required type="text" [(ngModel)]="Quote.qAddress" [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Email: </ion-label>
-        <ion-input type="text" [(ngModel)]="Quote.qEmail" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-label class="label">Email: </ion-label>
+        <ion-input required type="text" [(ngModel)]="Quote.qEmail" [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Number of rooms: </ion-label>
-        <ion-input type="number" [(ngModel)]="Quote.qNumofRooms" [ngModelOptions]="{standalone: true}"
+        <ion-label class="label">Number of rooms: </ion-label>
+        <ion-input required type="number" [(ngModel)]="Quote.qNumofRooms" [ngModelOptions]="{standalone: true}"
           (ngModelChange)="chRoom()"></ion-input>
         <br>
       </ion-item>
@@ -43,29 +43,29 @@
       <br>
       <form class="form" [formGroup]="r">
       <ion-item>
-        <ion-label>Type: </ion-label>
-        <ion-input name="type" type="text" formControlName="roomType"></ion-input>
+        <ion-label class="label">Type: </ion-label>
+        <ion-input required name="type" type="text" formControlName="roomType"></ion-input>
         <br>
       </ion-item>
       <br>
       <ion-item>
-        <ion-label>Width: </ion-label>
-        <ion-input name="width" type="number" formControlName="roomWidth"></ion-input>
+        <ion-label class="label">Width: </ion-label>
+        <ion-input required name="width" type="number" formControlName="roomWidth"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Length: </ion-label>
-        <ion-input name="length" type="number" formControlName="roomLength"></ion-input>
+        <ion-label class="label">Length: </ion-label>
+        <ion-input required name="length" type="number" formControlName="roomLength"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Colour: </ion-label>
-        <ion-input name="colour" type="text" formControlName="roomColour"></ion-input>
+        <ion-label class="label">Colour: </ion-label>
+        <ion-input required name="colour" type="text" formControlName="roomColour"></ion-input>
         <br>
       </ion-item>
       <ion-item>
-        <ion-label>Paint: </ion-label>
-        <ion-select formControlName="roomPaintType">
+        <ion-label class="label">Paint: </ion-label>
+        <ion-select required formControlName="roomPaintType">
           <ion-select-option value="Standard - $24.99" name="paint">Standard - $24.99</ion-select-option>
           <ion-select-option value="Premium - $34.99" name="paint">Premium - $34.99</ion-select-option>
         </ion-select>
@@ -76,7 +76,7 @@
     <ion-button type="submit" (click)="save()">Save Quote</ion-button>
   </div>
   <div>
-    <ion-button (click)="deleteAll()" type="submit">Delete All Quotes</ion-button>
+    <ion-button (click)="deleteAll()" type="submit" color="danger">Delete All Quotes</ion-button>
   </div>
 </form>
 </ion-content>

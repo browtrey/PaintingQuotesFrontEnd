@@ -2,13 +2,12 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  
+<ion-content  color="medium">
+  <ion-button (click)="refreshPage()">Refresh List</ion-button>
   <ion-item *ngFor="let q of quote">
-    <ion-button color="danger" (click)="deleteOne(q.Id)">Delete</ion-button>
-    <ion-button [routerLink]="['/edit-quotation', q.Id]">Go to edit</ion-button>
+    
     <br>
-    <ion-label>
+    <ion-label class="disQ">
       ID: {{q.Id}}
       <br>
       Date: {{q.qDate}}
@@ -22,7 +21,7 @@
       Number of Rooms: {{q.qNumofRooms}}
       <br>
       <ion-item *ngFor="let r of q.qRoom; let i = index">
-        <ion-label>
+        <ion-label class="disQ">
           Room {{i+1}}
           <br>
           <br>
@@ -38,8 +37,9 @@
         </ion-label>
       </ion-item>
     </ion-label>
-    <hr>
     <br>
+    <ion-button color="danger" (click)="deleteOne(q.Id)">Delete</ion-button>
+    <ion-button [routerLink]="['/edit-quotation', q.Id]">Go to edit</ion-button>
     <br>
   </ion-item>
 </ion-content>
