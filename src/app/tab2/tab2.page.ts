@@ -16,6 +16,8 @@ export class Tab2Page {
   ngOnInit() {
     this.serv.listAll().subscribe(data => {
       this.quote = data
+      console.log(this.quote)
+      console.log(this.quote._id)
     },
       (err: HttpErrorResponse) => {
         console.log(err.message);

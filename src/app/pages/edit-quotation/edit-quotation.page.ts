@@ -23,7 +23,8 @@ export class EditQuotationPage implements OnInit {
   ngOnInit() {
     this.qId = this.route.snapshot.params.parm
     console.log(this.qId)
-    this.serv.listOne(this.qId).subscribe(data => {
+    const params = { _id: this.qId}
+    this.serv.listOne(params).subscribe(data => {
       console.log(data)
       this.oldQuote = data
 
@@ -59,7 +60,7 @@ export class EditQuotationPage implements OnInit {
         {
           text: 'Yes', handler: () => {
             console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
-            const params = { Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom }
+            const params = [{id: this.oldQuote[0]._id},{ Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom }]
             this.serv.Update(params).subscribe(data => {
               console.log(data)
             },
