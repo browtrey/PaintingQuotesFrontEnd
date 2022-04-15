@@ -31,4 +31,8 @@ export class ProjServiceService {
   Update(params){
     return this.http.put('http://127.0.0.1:8888/update/', { params })
   }
+
+  setupDb(params){
+    return this.http.get('http://127.0.0.1:8888/setup/',{ params })
+  }
 }

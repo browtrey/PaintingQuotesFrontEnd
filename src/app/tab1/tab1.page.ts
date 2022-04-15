@@ -5,6 +5,7 @@ import { Room } from '../models/Room';
 import { ProjServiceService } from '../services/proj-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
+import { datab } from '../models/Database';
 
 @Component({
   selector: 'app-tab1',
@@ -22,12 +23,12 @@ export class Tab1Page {
   Room: Room[] = [{ roomType: "", roomWidth: null, roomLength: null, roomColour: "", roomPaintType: "" }]
   Rooms: FormGroup[] = new Array
   Quote: Quotation = { Id: null, qDate: this.today, qName: "", qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room }
+  db: datab = {databaseName: "", collectionName: ""}
   idGen: number = 0
 
   constructor(private serv: ProjServiceService, public alert: AlertController) { }
 
-  chRoom() {
-    console.log('chRoom')
+  addRoom() {
     for (let i = 0; i < this.Quote.qNumofRooms; i++) {
       this.Rooms[i] = new FormGroup({
         roomType: new FormControl(),
@@ -40,6 +41,20 @@ export class Tab1Page {
   }
 
   async save() {
+    if(this.Quote.qAddress == "" || this.Quote.qEmail == "" || this.Quote.qName == "" || this.Quote.qNumofRooms == null || this.Quote.qRoom  == null){
+      const alert = await this.alert.create({
+        header: 'Error',
+        subHeader: '',
+        message: 'Plese enter in all fields',
+        buttons: [{
+          text: 'OK', handler: () => {
+            console.log('Confirmed')
+          }
+        }]
+      })
+      await alert.present()
+    }
+    else{
     const alert = await this.alert.create({
       header: 'Confirm',
       subHeader: '',
@@ -52,8 +67,6 @@ export class Tab1Page {
         },
         {
           text: 'Yes', handler: () => {
-            this.idGen++
-
             for (let i = 0; i < this.Quote.qNumofRooms; i++) {
               this.Quote.qRoom[i] = this.Rooms[i].value
             }
@@ -69,11 +82,13 @@ export class Tab1Page {
                 console.log(err.message);
               }
             )
+            this.idGen++
           }
         }
       ]
     })
     await alert.present()
+  }
   }
 
 
@@ -107,5 +122,15 @@ export class Tab1Page {
   }
 
   //func to startup db
+  /*createDb(){
+    console.log(this.db.databaseName + " " + this.db.collectionName)
+    const params = { db: this.db.databaseName, col: this.db.collectionName}
+    this.serv.setupDb(params).subscribe(data =>{
+      console.log(data)
+    },
+    (err: HttpErrorResponse) => {
+      console.log(err.message);
+    })
+  }*/
 
 }

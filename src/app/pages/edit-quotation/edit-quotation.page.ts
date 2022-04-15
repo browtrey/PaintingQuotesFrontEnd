@@ -50,7 +50,7 @@ export class EditQuotationPage implements OnInit {
     const alert = await this.alert.create({
       header: 'Confirm',
       subHeader: '',
-      message: 'Are you sure you want to delete this appointment',
+      message: 'Are you sure you want to update this quote',
       buttons: [
         {
           text: 'Cancel', handler: () => {

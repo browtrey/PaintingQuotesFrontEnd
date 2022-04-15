@@ -17,15 +17,20 @@ export class Tab2Page {
     this.serv.listAll().subscribe(data => {
       this.quote = data
       console.log(this.quote)
-      console.log(this.quote._id)
     },
       (err: HttpErrorResponse) => {
         console.log(err.message);
       })
   }
 
-  refreshPage() {
-    location.reload()
+  refreshList() {
+    this.serv.listAll().subscribe(data => {
+      this.quote = data
+      console.log(this.quote)
+    },
+      (err: HttpErrorResponse) => {
+        console.log(err.message);
+      })
   }
 
   async deleteOne(x) {
