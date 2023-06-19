@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,30 +10,31 @@ export class ProjServiceService {
   constructor(private http: HttpClient) { }
 
   insert(params) {
-    return this.http.post('http://127.0.0.1:8888/add/',{ params })
-  }
+    return this.http.post('http://127.0.0.1:8888/add/',{ params });
+  };
 
   listAll() {
-    return this.http.get('http://127.0.0.1:8888/listAll/')
-  }
+    return this.http.get('http://127.0.0.1:8888/listAll/');
+  };
 
   listOne(params) {
-    return this.http.get('http://127.0.0.1:8888/listOne/',{ params })
-  }
+    return this.http.get('http://127.0.0.1:8888/listOne/',{ params });
+  };
 
   deleteAll() {
-    return this.http.delete('http://127.0.0.1:8888/deleteAll/')
-  }
+    return this.http.delete('http://127.0.0.1:8888/deleteAll/');
+  };
 
   deleteOne(params) {
-    return this.http.delete('http://127.0.0.1:8888/deleteOne/', { params })
-  }
+    return this.http.delete('http://127.0.0.1:8888/deleteOne/', { params });
+  };
 
   Update(params){
-    return this.http.put('http://127.0.0.1:8888/update/', { params })
-  }
+    return this.http.put('http://127.0.0.1:8888/update/', { params });
+  };
 
-  setupDb(params){
-    return this.http.get('http://127.0.0.1:8888/setup/',{ params })
-  }
+  getCount(){
+    return this.http.get('http://127.0.0.1:8888/getCount/');
+  };
+
 }

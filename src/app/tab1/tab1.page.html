@@ -6,13 +6,9 @@
   <form>
     <ion-card>
       <ion-item>
-        <ion-label class="label">ID: </ion-label>
-        <ion-input required value={{idGen}} readonly></ion-input>
-        <br>
-      </ion-item>
-      <ion-item>
         <ion-label class="label">Date: </ion-label>
-        <ion-input required readonly value="{{today}}" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required readonly value="{{today}}" [(ngModel)]="Quote.qDate"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
@@ -42,43 +38,40 @@
       <ion-title>Room {{i+1}}</ion-title>
       <br>
       <form class="form" [formGroup]="r">
-      <ion-item>
-        <ion-label class="label">Type: </ion-label>
-        <ion-input required name="type" type="text" formControlName="roomType"></ion-input>
+        <ion-item>
+          <ion-label class="label">Type: </ion-label>
+          <ion-input required name="type" type="text" formControlName="roomType"></ion-input>
+          <br>
+        </ion-item>
         <br>
-      </ion-item>
-      <br>
-      <ion-item>
-        <ion-label class="label">Width: </ion-label>
-        <ion-input required name="width" type="number" formControlName="roomWidth"></ion-input>
-        <br>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Length: </ion-label>
-        <ion-input required name="length" type="number" formControlName="roomLength"></ion-input>
-        <br>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Colour: </ion-label>
-        <ion-input required name="colour" type="text" formControlName="roomColour"></ion-input>
-        <br>
-      </ion-item>
-      <ion-item>
-        <ion-label class="label">Paint: </ion-label>
-        <ion-select required formControlName="roomPaintType">
-          <ion-select-option value="Standard - $24.99" name="paint">Standard - $24.99</ion-select-option>
-          <ion-select-option value="Premium - $34.99" name="paint">Premium - $34.99</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </form>
+        <ion-item>
+          <ion-label class="label">Width (m): </ion-label>
+          <ion-input required name="width" type="number" formControlName="roomWidth"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Length (m): </ion-label>
+          <ion-input required name="length" type="number" formControlName="roomLength"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Colour: </ion-label>
+          <ion-input required name="colour" type="text" formControlName="roomColour"></ion-input>
+          <br>
+        </ion-item>
+        <ion-item>
+          <ion-label class="label">Paint: </ion-label>
+          <ion-select required formControlName="roomPaintType">
+            <ion-select-option value="Standard - $24.99" name="paint">Standard - $24.99</ion-select-option>
+            <ion-select-option value="Premium - $34.99" name="paint">Premium - $34.99</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </form>
     </ion-card>
-  <div>
-    <ion-button type="submit" (click)="save()">Save Quote</ion-button>
-  </div>
-  <div>
-    <ion-button (click)="deleteAll()" type="submit" color="danger">Delete All Quotes</ion-button>
-  </div>
-</form>
+    <div>
+      <ion-button type="submit" (click)="save()">Save Quote</ion-button>
+    </div>
+  </form>
 </ion-content>
 
 <ion-footer>

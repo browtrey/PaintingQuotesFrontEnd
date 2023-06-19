@@ -1,9 +1,9 @@
 <ion-header>
-  <ion-back-button defaultHref="/"></ion-back-button>
+  <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
   <app-header></app-header>
 </ion-header>
 
-<ion-content  color="medium">
+<ion-content color="medium">
   <br>
   <ion-title>Edit Quote</ion-title>
   <br>
@@ -11,59 +11,70 @@
     <ion-card *ngFor="let q of oldQuote">
       <ion-item>
         <ion-label class="label">ID: </ion-label>
-        <ion-input required value="{{q.Id}}" [(ngModel)]="Quote.Id" [ngModelOptions]="{standalone: true}" readonly></ion-input>
+        <ion-input required value="{{q._id}}" [(ngModel)]="Quote.Id" [ngModelOptions]="{standalone: true}"
+          readonly></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label class="label">Date: </ion-label>
-        <ion-input required readonly value="{{q.qDate}}" [(ngModel)]="Quote.qDate" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required readonly value="{{q.qDate}}" [(ngModel)]="Quote.qDate"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label class="label">Name: </ion-label>
-        <ion-input required type="text" value="{{q.qName}}" [(ngModel)]="Quote.qName" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="text" value="{{q.qName}}" [(ngModel)]="Quote.qName"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label class="label">Address: </ion-label>
-        <ion-input required type="text" value="{{q.qAddress}}" [(ngModel)]="Quote.qAddress" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="text" value="{{q.qAddress}}" [(ngModel)]="Quote.qAddress"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label class="label">Email: </ion-label>
-        <ion-input required type="text" value="{{q.qEmail}}" [(ngModel)]="Quote.qEmail" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="text" value="{{q.qEmail}}" [(ngModel)]="Quote.qEmail"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <ion-item>
         <ion-label class="label">Number of rooms: </ion-label>
-        <ion-input required type="number" value="{{q.qNumofRooms}}" [(ngModel)]="Quote.qNumofRooms" [ngModelOptions]="{standalone: true}"></ion-input>
+        <ion-input required type="number" value="{{q.qNumofRooms}}" [(ngModel)]="Quote.qNumofRooms"
+          [ngModelOptions]="{standalone: true}"></ion-input>
         <br>
       </ion-item>
       <br>
       <ion-card *ngFor="let r of q.qRoom; let i = index">
         <ion-item>
           <ion-label class="label">Type of Room: </ion-label>
-          <ion-input type="text" value="{{r.roomType}}" [(ngModel)]="Quote.qRoom[i].roomType" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-input type="text" value="{{r.roomType}}" [(ngModel)]="Quote.qRoom[i].roomType"
+            [ngModelOptions]="{standalone: true}"></ion-input>
           <br>
         </ion-item>
         <ion-item>
           <ion-label class="label">Width: </ion-label>
-          <ion-input type="text" value="{{r.roomWidth}}" [(ngModel)]="Quote.qRoom[i].roomWidth" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-input type="text" value="{{r.roomWidth}}" [(ngModel)]="Quote.qRoom[i].roomWidth"
+            [ngModelOptions]="{standalone: true}"></ion-input>
           <br>
         </ion-item>
         <ion-item>
           <ion-label class="label">Length: </ion-label>
-          <ion-input type="text" value="{{r.roomLength}}" [(ngModel)]="Quote.qRoom[i].roomLength" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-input type="text" value="{{r.roomLength}}" [(ngModel)]="Quote.qRoom[i].roomLength"
+            [ngModelOptions]="{standalone: true}"></ion-input>
           <br>
         </ion-item>
         <ion-item>
           <ion-label class="label">Colour: </ion-label>
-          <ion-input type="text" value="{{r.roomColour}}" [(ngModel)]="Quote.qRoom[i].roomColour" [ngModelOptions]="{standalone: true}"></ion-input>
+          <ion-input type="text" value="{{r.roomColour}}" [(ngModel)]="Quote.qRoom[i].roomColour"
+            [ngModelOptions]="{standalone: true}"></ion-input>
           <br>
         </ion-item>
         <ion-item>
           <ion-label class="label">Paint: </ion-label>
-          <ion-select value="{{r.roomPaintType}}" [(ngModel)]="Quote.qRoom[i].roomPaintType" [ngModelOptions]="{standalone: true}">
+          <ion-select value="{{r.roomPaintType}}" [(ngModel)]="Quote.qRoom[i].roomPaintType"
+            [ngModelOptions]="{standalone: true}">
             <ion-select-option value="Standard - $24.99" name="paint">Standard - $24.99</ion-select-option>
             <ion-select-option value="Premium - $34.99" name="paint">Premium - $34.99</ion-select-option>
           </ion-select>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Quotation } from 'src/app/models/Quotation';
 import { Room } from 'src/app/models/Room';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjServiceService } from 'src/app/services/proj-service.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
@@ -18,17 +18,18 @@ export class EditQuotationPage implements OnInit {
   Quote: Quotation = { Id: null, qDate: null, qName: "", qAddress: "", qEmail: "", qNumofRooms: null, qRoom: this.Room }
   qId: any;
 
-  constructor(private route: ActivatedRoute, private serv: ProjServiceService, public alert: AlertController) { }
+  constructor(private route: ActivatedRoute, private serv: ProjServiceService, public alert: AlertController, private router: Router) { }
 
+  //loads in the selected data
   ngOnInit() {
     this.qId = this.route.snapshot.params.parm
     console.log(this.qId)
-    const params = { _id: this.qId}
+    const params = { _id: this.qId }
     this.serv.listOne(params).subscribe(data => {
       console.log(data)
       this.oldQuote = data
 
-      this.Quote.Id = this.oldQuote[0].Id
+      this.Quote.Id = this.oldQuote[0]._id
       this.Quote.qDate = this.oldQuote[0].qDate
       this.Quote.qName = this.oldQuote[0].qName
       this.Quote.qAddress = this.oldQuote[0].qAddress
@@ -45,7 +46,7 @@ export class EditQuotationPage implements OnInit {
   }
 
 
-
+  //sends the updated data to the database
   async update() {
     const alert = await this.alert.create({
       header: 'Confirm',
@@ -59,13 +60,14 @@ export class EditQuotationPage implements OnInit {
         },
         {
           text: 'Yes', handler: () => {
-            console.log(this.Quote.Id, this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
-            const params = [{id: this.oldQuote[0]._id},{ Id: this.Quote.Id, qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom }]
+            console.log(this.Quote.qAddress, this.Quote.qDate, this.Quote.qEmail, this.Quote.qName, this.Quote.qNumofRooms, this.Quote.qRoom)
+            const params = [{ id: this.oldQuote[0]._id }, { qDate: this.Quote.qDate, qName: this.Quote.qName, qAddress: this.Quote.qAddress, qEmail: this.Quote.qEmail, qNumofRooms: this.Quote.qNumofRooms, qRoom: this.Quote.qRoom }]
             this.serv.Update(params).subscribe(data => {
               console.log(data)
+              this.router.navigate(['/tabs/tab2'])
             },
               (err: HttpErrorResponse) => {
-                console.log(err.message);
+                console.log(err.message)
               }
             )
           }

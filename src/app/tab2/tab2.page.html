@@ -2,13 +2,14 @@
   <app-header></app-header>
 </ion-header>
 
-<ion-content  color="medium">
+<ion-content color="medium">
   <ion-button (click)="refreshList()">Refresh List</ion-button>
+  <ion-button (click)="deleteAll()" type="submit" color="danger">Delete All Quotes</ion-button>
   <ion-item *ngFor="let q of quote">
-    
+
     <br>
     <ion-label class="disQ">
-      ID: {{q.Id}}
+      ID: {{q._id}}
       <br>
       Date: {{q.qDate}}
       <br>
@@ -27,9 +28,9 @@
           <br>
           Type of Room: {{r.roomType}}
           <br>
-          Width: {{r.roomWidth}}
+          Width (m): {{r.roomWidth}}
           <br>
-          Length: {{r.roomLength}}
+          Length (m): {{r.roomLength}}
           <br>
           Colour: {{r.roomColour}}
           <br>
